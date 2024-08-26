@@ -1,6 +1,9 @@
-// src/blake2b.ts
-var Blake2b;
-((Blake2b) => {
+(function(root, factory) {
+    (typeof module === 'object' && module.exports) ? module.exports = factory() : root.Blake2b = factory()
+}(typeof self !== 'undefined' ? self : this, function() {
+    "use strict";
+    var Blake2b = (()=>{
+        
   const v = new Uint32Array(32);
   const m = new Uint32Array(32);
   const BLAKE2B_IV32 = new Uint32Array([
@@ -389,9 +392,7 @@ var Blake2b;
     const output = blake2bStart(message, secret, length, salt, personal);
     return toHex(output);
   }
-  Blake2b.hash = hash;
-})(Blake2b ||= {});
-var blake2b_default = Blake2b;
-export {
-  blake2b_default as default
-};
+    }
+    )();
+    return Blake2b
+}));
